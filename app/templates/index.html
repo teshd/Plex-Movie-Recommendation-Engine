@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plex Picks</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Plex Picks</h1>
+    <p id="stats" class="muted">Loading your library…</p>
+  </header>
+
+  <form id="filters">
+    <label>Genre
+      <select name="genre"><option value="">Any</option></select>
+    </label>
+    <label>From <input name="min_year" type="number" min="1900" max="2100" placeholder="1900"></label>
+    <label>To <input name="max_year" type="number" min="1900" max="2100" placeholder="2100"></label>
+    <label>Show
+      <select name="n">
+        <option>12</option><option selected>24</option><option>48</option>
+      </select>
+    </label>
+    <button type="submit">Apply</button>
+    <button type="button" id="refresh" class="secondary">Refresh from Plex</button>
+  </form>
+
+  <p id="status" class="muted" role="status"></p>
+  <main id="grid" class="grid"></main>
+
+  <template id="card">
+    <article class="card">
+      <img loading="lazy" alt="">
+      <div class="body">
+        <h2></h2>
+        <p class="meta muted"></p>
+        <p class="reason"></p>
+        <details><summary>Summary</summary><p class="summary"></p></details>
+      </div>
+    </article>
+  </template>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
